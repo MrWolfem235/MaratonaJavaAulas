@@ -5,18 +5,20 @@ import java.util.ArrayList;
 
 public class Anime {
 
+    {Anime.listaAnimes.add(this);}
+
     private static ArrayList <Anime> listaAnimes = new ArrayList();
     private String nome;
     private String[] episodios;
 
     public Anime() {
-        this.setEpisodios(new String[100]);
+        this.setEpisodios(new String[0]);
         this.setNome("---");
     }
 
     public Anime(String nome) {
         this.setNome(nome);
-        this.setEpisodios(new String[100]);
+        this.setEpisodios(new String[0]);
     }
 
     public Anime(String nome, int episodios) {
@@ -35,7 +37,6 @@ public class Anime {
         this.setEpisodios(new String[episodios]);
     }
 
-    {Anime.listaAnimes.add(this);}
 
     public static String listaAnimes(){
         String info = "=======Lista Animes======\n";
@@ -89,7 +90,7 @@ public class Anime {
 
     public void setEpisodios(String[] episodios) {
         this.episodios = episodios;
-        DecimalFormat formatar = new DecimalFormat("000");
+        DecimalFormat formatar = this.episodios.length > 999 ? new DecimalFormat("0000"):new DecimalFormat("000");
         for (int i = 0; i < this.episodios.length ; i++){
             this.episodios[i] = formatar.format(i+1);
         }
