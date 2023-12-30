@@ -4,15 +4,15 @@ public class Jogador {
     private String nome;
     private Time time;
 
-    public String info(){
-        return getNome()+(time != null ? " "+getTime().getNome():"");
+    public String info() {
+        return getNome() + (time != null ? " " + getTime().getNome() : "");
     }
 
-    public Jogador(String nome){
+    public Jogador(String nome) {
         setNome(nome);
     }
 
-    public Jogador(String nome, Time time){
+    public Jogador(String nome, Time time) {
         setNome(nome);
         setTime(time);
     }

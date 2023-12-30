@@ -8,18 +8,18 @@ public class Time {
         this.nome = nome;
     }
 
-    public Time(String nome, Jogador... jogadores ){
+    public Time(String nome, Jogador... jogadores) {
         this.nome = nome;
         this.jogadores = jogadores;
-        for (Jogador jogador: jogadores){
+        for (Jogador jogador : jogadores) {
             jogador.setTime(this);
         }
     }
 
-    public String info(){
-        String info = getNome()+"\n";
-        for (Jogador jogador: jogadores){
-            info += jogador.getNome()+"\n";
+    public String info() {
+        String info = getNome() + "\n";
+        for (Jogador jogador : jogadores) {
+            info += jogador.getNome() + "\n";
         }
         return info;
     }
