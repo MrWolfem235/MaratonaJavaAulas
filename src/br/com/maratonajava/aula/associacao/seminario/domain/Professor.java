@@ -7,24 +7,36 @@ public class Professor {
     private String nome;
     private String especialidade;
     private ArrayList<Seminario> seminarios = new ArrayList();
+    private static ArrayList <Professor> professores = new ArrayList();
 
     public Professor(String nome, String especialidade) {
         this.nome = nome;
         this.especialidade = especialidade;
         System.out.println("Novo professor cadastrado!!!");
         System.out.println(toString());
+        professores.add(this);
     }
 
     @Override
     public String toString() {
         String seminariosInfo = "";
-        for (Seminario seminario : seminarios) {
-            seminariosInfo += seminario.toString();
+        if (seminarios != null) {
+            for (Seminario seminario : seminarios) {
+                seminariosInfo += "\n-"+seminario.getTitulo();
+            }
         }
         return "--- Professor ---" +
-                "\nNome:" + nome + "\n" +
-                "Especialidade: j" + especialidade + "\n" +
+                "\nNome: " + nome + "\n" +
+                "Especialidade: " + especialidade + "\n" +
                 "Seminarios: "+seminariosInfo+"\n";
+    }
+
+    public static String professoresToString(){
+        String info = "";
+        for (Professor professor: professores){
+            info += professor.toString()+"\n";
+        }
+        return info;
     }
 
     public String getNome() {
@@ -52,9 +64,17 @@ public class Professor {
     }
 
     public void addSeminarios(Seminario... seminarios) {
-        this.seminarios.addAll(List.of(seminarios));
+        setSeminarios(seminarios);
         for (Seminario seminario : seminarios) {
             seminario.setProfessor(this);
         }
+    }
+
+    public static ArrayList getProfessores() {
+        return professores;
+    }
+
+    public static void setProfessores(ArrayList professores) {
+        Professor.professores = professores;
     }
 }
