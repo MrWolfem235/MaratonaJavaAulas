@@ -3,7 +3,7 @@ package br.com.maratonajava.aula.heranca.domain;
 public class Endereco {
     private String cep;
     private String rua;
-
+    
     public Endereco(String cep, String rua) {
         this.cep = cep;
         this.rua = rua;

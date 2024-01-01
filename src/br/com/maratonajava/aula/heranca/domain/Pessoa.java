@@ -5,10 +5,18 @@ public class Pessoa {
     protected String cpf;
     protected Endereco endereco;
 
+    static{
+        System.out.println("Dentro do inicializador estático da super classe");
+    }
+    {
+        System.out.println("Dentro do inicializador de instância da super classe");
+    }
+    
     public Pessoa(String nome, String cpf, Endereco endereco) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
+        System.out.println("Dentro do construtor da super classe");
     }
 
     public Pessoa(String nome, String cpf){

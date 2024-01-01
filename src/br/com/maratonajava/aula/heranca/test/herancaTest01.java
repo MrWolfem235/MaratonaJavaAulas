@@ -4,8 +4,6 @@ import br.com.maratonajava.aula.heranca.domain.Endereco;
 import br.com.maratonajava.aula.heranca.domain.Funcionario;
 import br.com.maratonajava.aula.heranca.domain.Pessoa;
 
-import java.sql.SQLOutput;
-
 public class herancaTest01 {
     public static void main(String[] args) {
         Endereco e1 = new Endereco("13222-177","R. das Flores");
