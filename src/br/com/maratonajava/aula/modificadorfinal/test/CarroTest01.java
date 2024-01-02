@@ -1,6 +1,6 @@
 package br.com.maratonajava.aula.modificadorfinal.test;
 
-import br.com.maratonajava.aula.modificadorfinal.domain.Carro;
+import br.com.maratonajava.aula.modificadorfinal.domain.*;
 
 public class CarroTest01 {
     public static void main(String[] args) {
@@ -10,9 +10,9 @@ public class CarroTest01 {
         c1.COMPRADOR.setNome("João Fernandes Almeida");
         c2.COMPRADOR.setNome("João Fernandes");
 
-        System.out.println(c1.toString());
-        System.out.println();
-        System.out.println(c2.toString());
+        Ferrari c3 = new Ferrari("Enzo");
+
+        System.out.println(c3.toString());
     }
     
 }
