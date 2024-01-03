@@ -1,12 +1,13 @@
 package br.com.maratonajava.aula.modificadorabstrato.domain;
 
-public abstract class Funcionario{
+public abstract class Funcionario extends Pessoa{
     protected String nome;
     protected double salario;
 
     public Funcionario(String nome, double salario) {
         this.nome = nome;
         this.salario = salario;
+        calcBonus();
     }
 
     @Override
@@ -14,5 +15,10 @@ public abstract class Funcionario{
         return "--- Funcionario --- \n-Nome: " + nome + "\n-Salario: " + salario;
     }
 
-    
+    @Override
+    public void imprime(){
+        System.out.println("Imprimindo...");
+    }
+
+    public abstract void calcBonus();
 }

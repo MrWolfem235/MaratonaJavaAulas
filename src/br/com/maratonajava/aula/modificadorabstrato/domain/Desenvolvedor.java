@@ -9,4 +9,8 @@ public class Desenvolvedor extends Funcionario {
     public String toString(){
         return "=== Desenvolvedor ===\n"+super.toString();
     }
+
+    public void calcBonus(){
+        this.salario  += this.salario * 0.02;
+    }
 }

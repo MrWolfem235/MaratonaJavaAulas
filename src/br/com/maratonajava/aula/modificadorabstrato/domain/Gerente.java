@@ -9,4 +9,9 @@ public class Gerente extends Funcionario {
     public String toString(){
         return "=== Gerente ===\n"+super.toString();
     }
+
+    @Override
+    public void calcBonus(){
+        this.salario += this.salario * 0.2;
+    }
 }
