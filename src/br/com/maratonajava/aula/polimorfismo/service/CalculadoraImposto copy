@@ -1,0 +1,29 @@
+package br.com.maratonajava.aula.polimorfismo.service;
+
+import br.com.maratonajava.aula.polimorfismo.dominio.*;
+
+public class CalculadoraImposto {
+    
+    public static void calcularImpostoComputador (Computador computador){
+        String nome = computador.getNome();
+        double valor = computador.getValor();
+        double taxa = computador.TAXA;
+        double imposto = computador.calcularImposto();
+        double total = valor + imposto;
+
+        System.out.println("---- Relatório Imposto Computador ----");
+        System.out.printf("Computador: %s\nValor: %.2f\nTaxa para Computadores: %.2f\nTaxa a pagar: %.2f\nTotal: %.2f\n",nome, valor, taxa, imposto, total);        
+    }
+    
+    public static void calcularImpostoTomate (Tomate tomate){
+        String nome = tomate.getNome();
+        double valor = tomate.getValor();
+        double taxa = tomate.TAXA;
+        double imposto = tomate.calcularImposto();
+        double total = valor + imposto;
+
+        System.out.println("---- Relatório Imposto Tomate ----");
+        System.out.printf("Computador: %s\nValor: %.2f\nTaxa para Tomates: %.2f\nTaxa a pagar: %.2f\nTotal: %.2f\n",nome, valor, taxa, imposto, total);        
+    }
+
+}

@@ -14,5 +14,10 @@ public class DataLoaderTest01 {
         dbl.remove();
         fdl.remove();
 
+        dbl.checkPermission();
+        fdl.checkPermission();
+
+        DataLoader.checkPermision();
+
     }
 }
