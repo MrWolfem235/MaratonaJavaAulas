@@ -17,7 +17,7 @@ public class DataLoaderTest01 {
         dbl.checkPermission();
         fdl.checkPermission();
 
-        DataLoader.checkPermision();
+        // DataLoader.checkPermision();
 
     }
 }

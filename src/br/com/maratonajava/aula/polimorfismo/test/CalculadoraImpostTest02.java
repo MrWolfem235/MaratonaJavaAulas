@@ -6,7 +6,7 @@ public class CalculadoraImpostTest02 {
     public static void main(String[] args) {
         Produto produto01 = new Computador("Ryzen 9", 3000);
         Computador computador01 = new Computador("i7", 11000);
-        Produto produto02 = new Tomate("Tomate Japonês", 10);
+        Produto produto02 = new Tomate("Tomate Japonês", 10, "10/1/2023");
 
         // System.out.println(produto01.calcularImposto());
         // System.out.println(produto02.calcularImposto());

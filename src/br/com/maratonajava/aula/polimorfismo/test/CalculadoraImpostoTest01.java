@@ -6,7 +6,7 @@ import br.com.maratonajava.aula.polimorfismo.service.CalculadoraImposto;
 public class CalculadoraImpostoTest01 {
     public static void main(String[] args) {
     Produto produto01 = new Computador("CNU10i7", 11000);
-    Produto produto02 = new Tomate("Tomate Siciliano", 10);
+    Produto produto02 = new Tomate("Tomate Siciliano", 10, "10/01/2024");
     Produto produto03 = new Televisao("Toshiba 3000", 250);
 
 
