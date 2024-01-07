@@ -5,94 +5,90 @@ import java.util.ArrayList;
 import br.com.maratonajava.aula.projetos.passagemaerea.assento.TipoAssento;
 
 public class Aviao {
+    private int largura;//largura pré definida dos assentos, e dps o comprimento é setado
     private String nome;
     private ArrayList<Assento> assentos = new ArrayList<Assento>();
     private Assento assentoOrganizado[][];
 
-    public Aviao(String nome) {
+    public Aviao(String nome, int largura) {
+        if (largura <= 0){throw new IllegalArgumentException("ERRO: Entrada de largura negativa ou zero impossível!");}//lança exceção se largura for negariva
         this.nome = nome;
+        this.largura = largura;
     }
     
 
     @Override
     public String toString() {
-        return "--- Aviao ---\n -nome: " + nome + "\n-qtdAssentos: "+this.assentos.size()+"\n -Assentos: \n" + assentoToString();
+        return "--- Aviao ---\n-Nome: " + nome + "\n-Assentos: "+this.assentos.size()+"\n\n" + assentoToString();
     }
 
-    private String assentoToString(){
+    private String assentoToString(){//transforma o array em string gráfico mostrando os assentos
         String retorno = "";
-        int k = 0;
-        for (int i = 0; i < assentoOrganizado[i].length; i++) {
-            for (int j = 0; j < assentoOrganizado[i].length; j++) {
-                retorno += String.format("[%s]", (assentoOrganizado[i][j].isOcupado()? "o":" "));
+        int comprimento = assentoOrganizado.length;
+        int totAssentos = assentos.size();
+        int k = 0;//contador externo do numero de assentos
+        for (int i = 0; i < comprimento || k < totAssentos; i++) {//cada linha
+            for (int j = 0; j < largura && k < totAssentos; j++) {//cada coluna
+                String codigo = assentoOrganizado[i][j].getCódigo();
+                retorno += String.format("[%s] ", (assentoOrganizado[i][j].isOcupado()? "--":codigo));
                 k++;
             }
-        System.out.println();
+        retorno += "\n";
         }
         return retorno;
     }
 
-    // private String showAssentos(){//criar exceção se não for mútliplo de 5, para facilitar desenho gráfico
-    //     int qtdAssentos = this.assentos.size();
-    //     int largura;
-    //     int comprimento;
-
-    //     for (int i = 3; ; i++) {//encontrar largura ideal
-    //         if(qtdAssentos % i == 0){largura = (qtdAssentos / i); break;}
-    //     }
-
-    //     comprimento = qtdAssentos / largura;
-
-    //     String retorno = "";
-    //     int k = 0;//iterador para puxar o índice do array assentos
-    //     for (int i = 5; i < largura; i++) {//de linha em linha
-    //         for (int j = 0; j < comprimento; j++) {//de coluna em coluna
-    //             retorno += String.format("[%s]", (this.assentos.get(k).isOcupado()? "o":" "));
-    //             k++;
-    //         }
-    //         retorno += "\n";//pula para próxima linha
-    //     }
-    //     return retorno;
-    // }
     private Assento[][] arrayListToAssentoOrganizado(){//transforma o array list em um array bidimensional com a ordem dos bancos
         
-        //criar exceção se não for mútliplo de 5, para facilitar desenho gráfico
+        //!!!criar exceção se não for mútliplo de 5, para facilitar desenho gráfico
         int qtdAssentos = this.assentos.size();
-        int largura;
         int comprimento;
         Assento[][] assentosEmOrdem;
+        int totAssentos = assentos.size();
 
-        for (int i = 3; ; i++) {//encontrar largura ideal
-            if(qtdAssentos % i == 0){largura = (qtdAssentos / i); break;}
-        }
 
-        comprimento = qtdAssentos / largura;
+        comprimento = (qtdAssentos / largura)+1;//define comprimento
 
-        assentosEmOrdem = new Assento[largura][comprimento];
+        assentosEmOrdem = new Assento[comprimento][largura];//inicialização do array dos assentos
 
         int k = 0;
-        for (int i = 0; i < comprimento; i++) {
-            for (int j = 0; j < largura; j++) {
-                assentosEmOrdem[j][i] = this.assentos.get(k);
+        for (int i = 0; i < comprimento || k < totAssentos; i++) {//preencher cada índice do array com o respectivo elemento do ArrayList
+            for (int j = 0; j < largura && k < totAssentos; j++) {
+                assentosEmOrdem[i][j] = this.assentos.get(k);
+                assentosEmOrdem[i][j].setCódigo(Auxiliar.alfabeto[i] + (j+1));
                 k++;
             }
         }
-
-        // String retorno = "";
-        // int k = 0;//iterador para puxar o índice do array assentos
-        // for (int i = 5; i < largura; i++) {//de linha em linha
-        //     for (int j = 0; j < comprimento; j++) {//de coluna em coluna
-        //         retorno += String.format("[%s]", (this.assentos.get(k).isOcupado()? "o":" "));
-        //         k++;
-        //     }
-        //     retorno += "\n";//pula para próxima linha
-        // }
         return assentosEmOrdem;
     }
+
+
+
+    public void addAssentos(int assentos, TipoAssento tipoAssento) {//entra qtd e tipo de assento, adiciona no ArrayList e usa o método que atualiza o arraylist para o array bidimensional
+        if (assentos < 0){
+            throw new IllegalArgumentException("ERRO: Entrada da quantidade de assentos negativa ou zero impossível!");
+        }
+        for (int i = 0; i < assentos; i++) {
+            this.assentos.add(new Assento(tipoAssento));
+        }
+        this.assentoOrganizado = arrayListToAssentoOrganizado();
+    }
+
+
+    public int getLargura() {
+        return largura;
+    }
+
+
+    public void setLargura(int largura) {
+        this.largura = largura;
+    }
+
 
     public String getNome() {
         return nome;
     }
+
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -103,12 +99,15 @@ public class Aviao {
         return assentos;
     }
 
-
-    public void addAssentos(int assentos, TipoAssento tipoAssento) {//entra qtd e tipo de assento, e cadastra na lista de assentos do aviao
-        for (int i = 0; i < assentos; i++) {
-            this.assentos.add(new Assento(tipoAssento));
-        }
-        arrayListToAssentoOrganizado();
+    public Assento[][] getAssentoOrganizado() {
+        return assentoOrganizado;
     }
+
+
+    public void setAssentoOrganizado(Assento[][] assentoOrganizado) {
+        this.assentoOrganizado = assentoOrganizado;
+    }
+
+
     
 }

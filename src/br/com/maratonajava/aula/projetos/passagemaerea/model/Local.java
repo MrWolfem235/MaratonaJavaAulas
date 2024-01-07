@@ -9,7 +9,7 @@ public class Local {
 
     @Override
     public String toString() {
-        return "--- Local ---\n -endereco: " + endereco;
+        return  endereco;
     }
 
     public String getendereco() {

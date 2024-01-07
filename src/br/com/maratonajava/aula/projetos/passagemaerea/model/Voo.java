@@ -1,7 +1,5 @@
 package br.com.maratonajava.aula.projetos.passagemaerea.model;
 
-import br.com.maratonajava.aula.projetos.passagemaerea.assento.TipoAssento;
-
 public class Voo {
     private Aviao aviao;
     private Local local;
@@ -13,8 +11,12 @@ public class Voo {
 
     @Override
     public String toString() {
-        return "--- Voo --- \n" + aviao + "\n" + local;
+        return "--- Voo --- \n" + "\n-Destino: " + local +"\n\n"+ aviao;
     }
+
+    public String basicInfo() {
+        return "--- Voo --- \n" + "-Destino: " + local +"\n-Avião: "+ aviao.getNome();       
+    } 
 
     public Aviao getAviao() {
         return aviao;
