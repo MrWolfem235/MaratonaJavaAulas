@@ -9,8 +9,9 @@ public class NewVimTest01 {
     public static void main(String[] args) {
 
         try{
-        NewVim.read("src\\br\\com\\maratonajava\\aula\\exceptions\\arquivo\\test.txt");
-        System.out.println("Main: read Executou a leitura com sucesso!");
+            System.out.println("Main: iniciando execução do read");
+            NewVim.read("src\\br\\com\\maratonajava\\aula\\exceptions\\arquivo\\test.txt");
+            System.out.println("Main: read Executou a leitura com sucesso!");
         }catch (FileNotFoundException e){
             System.out.println("Main: read encontrou erros ao encontrar o caminho do arquivo...");
         }catch (IOException e){

@@ -23,9 +23,13 @@ public  class NewVim {
         }catch(FileNotFoundException e){
             System.out.println("read: Arquivo não encontrado para leitura...\nrepassando exceção para superior...");
             e.printStackTrace();
+            //relançando exceção
+            throw e;
         }catch(IOException e){
             System.out.println("read: Ocorreu um erro inesperado na leitura...\nrepassando exceção para superior...");
             e.printStackTrace();
+            //relançando exceção
+            throw e;
         }finally{
             System.out.println("read: Fechando arquivo pendente");
         }
