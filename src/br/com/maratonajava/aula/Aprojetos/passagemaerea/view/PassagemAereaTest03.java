@@ -1,6 +1,5 @@
 package br.com.maratonajava.aula.Aprojetos.passagemaerea.view;
 
-import br.com.maratonajava.aula.Aprojetos.passagemaerea.*;
 import br.com.maratonajava.aula.Aprojetos.passagemaerea.assento.TipoAssento;
 import br.com.maratonajava.aula.Aprojetos.passagemaerea.model.Aviao;
 import br.com.maratonajava.aula.Aprojetos.passagemaerea.model.Local;
