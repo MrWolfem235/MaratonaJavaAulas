@@ -1,7 +1,5 @@
 package br.com.maratonajava.aula.Uregex.test;
 
-import br.com.maratonajava.aula.Aprojetos.estoque.types.Color;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
