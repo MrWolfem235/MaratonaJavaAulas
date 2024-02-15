@@ -8,7 +8,7 @@ import java.nio.file.attribute.FileTime;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-public class NIOFileAtributteTest {
+public class NIOFileAtributteTest01 {
     public static void main(String[] args) {
 
         //setting all the paths
