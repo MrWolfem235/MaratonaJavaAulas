@@ -46,11 +46,6 @@ public class NIODosFileAttributeTest01 {
             //getting the DOS file attribute modifier
             DosFileAttributeView dosFileAttributeView = Files.getFileAttributeView(filePath, DosFileAttributeView.class);
 
-            //creating local attribute info
-            String fileName = filePath.getFileName().toString();
-            boolean defaultIsHidden = dosFileAttributeView.readAttributes().isHidden();
-            boolean defaultIsReadOnly = dosFileAttributeView.readAttributes().isReadOnly();
-
             //setting the attributes values
             dosFileAttributeView.setHidden(isHidden);
             dosFileAttributeView.setReadOnly(isReadOnly);

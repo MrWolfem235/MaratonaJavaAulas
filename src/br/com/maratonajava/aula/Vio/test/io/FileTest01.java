@@ -1,4 +1,4 @@
-package br.com.maratonajava.aula.Vio.test;
+package br.com.maratonajava.aula.Vio.test.io;
 
 import java.io.File;
 import java.io.IOException;
