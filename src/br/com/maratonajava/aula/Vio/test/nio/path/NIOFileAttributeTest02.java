@@ -1,4 +1,4 @@
-package br.com.maratonajava.aula.Vio.test.nio.path.utils;
+package br.com.maratonajava.aula.Vio.test.nio.path;
 
 import java.io.IOException;
 import java.nio.file.Files;
