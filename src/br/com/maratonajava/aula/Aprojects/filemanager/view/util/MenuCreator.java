@@ -11,31 +11,37 @@ public class MenuCreator {
         this.options = options;
     }
 
+    //controller
     public Object init(){
-        System.out.print(getMenuView());
+        displayMenuView(options);
+        return receiveAndValidateInput(options);
+    }
+
+    //view
+    private void displayMenuView(Object[] options){
+        Out.limparTela();
+        System.out.println();
+        String menuDisplay;
+        menuDisplay = String.format("╔══════════╪╡ %s ╞╪══════════╡\n║\n╠══╪╡ ", this.menuName);
+
+        for (Object option : options){
+            menuDisplay += option.toString()+" ┄ ";
+        }
+        menuDisplay += "\n║\n╙───────┄";
+        System.out.println(menuDisplay);
+    }
+
+    //services
+    private Object receiveAndValidateInput (Object[] options){
         Object response;
-        while ((response = optionInput(true)) == null){
+        while ((response = optionInput(true, options)) == null){
             System.out.print("\tOpção inválida!");
             System.out.print("\r\n╟───────┄");
         }
-        return response;
+        return  response;
     }
 
-    private String getMenuView(){
-        Out.limparTela();
-        System.out.println();
-        String returnString;
-        returnString = String.format("╔══════════╪╡ %s ╞╪══════════╡\n║\n╠══╪╡ ", this.menuName);
-
-        for (Object option : options){
-            returnString += option.toString()+" ┄ ";
-        }
-        returnString += "\n║\n╙───────┄";
-        return returnString;
-    }
-
-    //receive an input from user, if matches a option, return it, if not return null
-    private Object optionInput (boolean caseInsensitiveInput){
+    private Object optionInput (boolean caseInsensitiveInput, Object[] options){
 
         Scanner scanner = new Scanner(System.in);
         String userResponse = scanner.nextLine().trim();
